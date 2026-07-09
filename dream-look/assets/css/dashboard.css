@@ -1,0 +1,224 @@
+/* ==========================================================================
+   Dream Look — Dashboard
+   ========================================================================== */
+
+.dash-header {
+  background: var(--color-black);
+  color: var(--color-white);
+  padding: var(--space-6) 0;
+}
+
+.dash-header__inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.dash-header h1 { color: var(--color-white); font-size: var(--fs-xl); }
+.dash-header p { color: rgba(255,255,255,0.6); font-size: var(--fs-sm); }
+
+.dash-grid {
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: 1fr;
+}
+
+.dash-stat {
+  background: var(--color-white);
+  border: 1px solid var(--color-gray-light);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+}
+
+.dash-stat__label {
+  font-size: var(--fs-xs);
+  color: var(--color-gray);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: var(--space-1);
+}
+
+.dash-stat__value {
+  font-size: var(--fs-2xl);
+  font-weight: 600;
+  color: var(--color-black);
+}
+
+.dash-stat__value--gold { color: var(--color-gold-dark); }
+
+.booking-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-4) 0;
+  border-bottom: 1px solid var(--color-gray-light);
+}
+
+.booking-row__service {
+  font-weight: 600;
+}
+
+.booking-row__meta {
+  font-size: var(--fs-sm);
+  color: var(--color-gray);
+}
+
+.queue-chip {
+  display: inline-block;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  color: var(--color-gold-dark);
+  background: var(--color-off-white);
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-pill);
+  margin-right: var(--space-2);
+}
+
+.wait-chip {
+  display: inline-block;
+  font-size: var(--fs-xs);
+  color: var(--color-gray);
+}
+
+.booking-row-wrap {
+  border-bottom: 1px solid var(--color-gray-light);
+}
+
+.booking-row-wrap:last-child {
+  border-bottom: none;
+}
+
+.booking-row-wrap .booking-row {
+  border-bottom: none;
+}
+
+.booking-row__queue {
+  margin-top: var(--space-1);
+}
+
+.booking-row__actions {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.reschedule-panel {
+  padding: 0 0 var(--space-4);
+}
+
+@media (min-width: 720px) {
+  .dash-grid--stats {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ---- Upcoming Appointment hero card (Phase 4) ---- */
+.upcoming-card {
+  background: var(--color-black);
+  color: var(--color-white);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  margin-bottom: var(--space-2);
+}
+
+.upcoming-card__eyebrow {
+  color: var(--color-gold);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-2);
+}
+
+.upcoming-card__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.upcoming-card__service { font-size: var(--fs-lg); font-weight: 600; color: var(--color-white); }
+.upcoming-card__meta { color: rgba(255,255,255,0.65); font-size: var(--fs-sm); }
+
+.upcoming-card__queue {
+  text-align: right;
+}
+
+.upcoming-card__queue-num {
+  font-size: var(--fs-2xl);
+  font-weight: 700;
+  color: var(--color-gold);
+}
+
+.upcoming-card__queue-label {
+  font-size: var(--fs-xs);
+  color: rgba(255,255,255,0.55);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.booking-timeline {
+  display: flex;
+  align-items: center;
+  margin: var(--space-4) 0;
+}
+
+.booking-timeline__step {
+  flex: 1;
+  text-align: center;
+  position: relative;
+}
+
+.booking-timeline__step::before {
+  content: '';
+  position: absolute;
+  top: 11px;
+  left: -50%;
+  width: 100%;
+  height: 2px;
+  background: rgba(255,255,255,0.15);
+  z-index: 0;
+}
+
+.booking-timeline__step:first-child::before { display: none; }
+
+.booking-timeline__dot {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  border: 2px solid rgba(255,255,255,0.25);
+  margin: 0 auto var(--space-1);
+  position: relative;
+  z-index: 1;
+}
+
+.booking-timeline__step.is-done .booking-timeline__dot {
+  background: var(--color-gold);
+  border-color: var(--color-gold);
+}
+
+.booking-timeline__step.is-done::before { background: var(--color-gold); }
+
+.booking-timeline__label {
+  font-size: 10px;
+  color: rgba(255,255,255,0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.booking-timeline__step.is-done .booking-timeline__label { color: var(--color-gold); }
+
+.upcoming-card__actions {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  margin-top: var(--space-4);
+}

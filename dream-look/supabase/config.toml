@@ -1,0 +1,4 @@
+# Supabase CLI project config.
+# Replace project_id with your own project's ref (Project Settings → General
+# → Reference ID) before running `supabase link` / `supabase functions deploy`.
+project_id = "YOUR-PROJECT-REF"

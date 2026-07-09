@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book a Slot — Dream Look</title>
+  <meta name="description" content="Choose a service, pick a time and book your Dream Look appointment.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💈</text></svg>">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/navbar.css">
+  <link rel="stylesheet" href="assets/css/footer.css">
+  <link rel="stylesheet" href="assets/css/book-slot.css">
+  <link rel="stylesheet" href="assets/css/feedback.css">
+</head>
+<body data-page="book-slot">
+
+  <div class="page-loader" id="dl-page-loader">
+    <div class="page-loader__mark">DREAM <span>LOOK</span></div>
+  </div>
+
+  <div id="dl-navbar"></div>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <div class="eyebrow">Book An Appointment</div>
+        <h1 class="section-title">Choose your service &amp; time</h1>
+        <p class="section-subtitle">Pick a service and date — we'll show you only the times that are actually free, buffer included.</p>
+
+        <div class="form-alert form-alert--error" id="booking-alert"></div>
+
+        <div class="booking-steps">
+          <div class="booking-step is-active" id="step-1"><span class="booking-step__num">1</span> Service</div>
+          <div class="booking-step" id="step-2"><span class="booking-step__num">2</span> Date &amp; Time</div>
+          <div class="booking-step" id="step-3"><span class="booking-step__num">3</span> Confirm</div>
+        </div>
+
+        <div class="booking-layout">
+          <div>
+            <h3 style="margin-bottom: var(--space-3);">1. Select your service(s)</h3>
+            <p class="field-hint" style="margin-bottom: var(--space-3);">Pick one or more — we'll total the price and duration automatically.</p>
+            <div id="service-options">
+              <p class="field-hint" id="services-loading">Loading services…</p>
+            </div>
+
+            <h3 style="margin: var(--space-6) 0 var(--space-3);">2. Pick a date</h3>
+            <div class="field" style="max-width:260px;">
+              <input type="date" id="booking-date" disabled>
+              <span class="field-hint" id="date-hint">Select a service first.</span>
+            </div>
+
+            <h3 style="margin: var(--space-5) 0 var(--space-3);">3. Pick a time</h3>
+            <div class="slot-grid" id="slot-grid"></div>
+            <p class="field-hint" id="slots-hint">Select a service and date to see open times.</p>
+          </div>
+
+          <aside class="booking-summary">
+            <h3 style="margin-bottom: var(--space-4);">Booking Summary</h3>
+            <div class="summary-row">
+              <span>Service</span>
+              <span id="summary-service">Not selected</span>
+            </div>
+            <div class="summary-row">
+              <span>Duration</span>
+              <span id="summary-duration">—</span>
+            </div>
+            <div class="summary-row">
+              <span>Date</span>
+              <span id="summary-date">—</span>
+            </div>
+            <div class="summary-row">
+              <span>Time</span>
+              <span id="summary-time">—</span>
+            </div>
+            <div class="summary-row summary-row__total">
+              <span>Total</span>
+              <span id="summary-total">₹0</span>
+            </div>
+            <button type="button" class="btn btn--primary btn--block" id="confirm-booking-btn" style="margin-top: var(--space-4);" disabled>
+              Confirm Booking
+            </button>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="dl-footer"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/supabaseClient.js"></script>
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/auth.js"></script>
+  <script src="assets/js/booking.js"></script>
+  <script src="assets/js/navbar.js"></script>
+  <script src="assets/js/footer.js"></script>
+  <script src="assets/js/offline-banner.js"></script>
+  <script src="assets/js/book-slot.js"></script>
+</body>
+</html>

@@ -1,0 +1,363 @@
+/* ==========================================================================
+   Dream Look — Admin Panel
+   Built on top of variables.css / style.css — no new colors introduced,
+   only new layout patterns (stat cards, tables, tabs, modals) needed for
+   admin workflows.
+   ========================================================================== */
+
+.admin-shell {
+  background: var(--color-off-white);
+  min-height: calc(100vh - 72px);
+  padding-bottom: var(--space-8);
+}
+
+.admin-header {
+  background: var(--color-black);
+  color: var(--color-white);
+  padding: var(--space-5) 0 0;
+}
+
+.admin-header__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.admin-header h1 { color: var(--color-white); font-size: var(--fs-xl); margin-bottom: 2px; }
+.admin-header p { color: rgba(255,255,255,0.6); font-size: var(--fs-sm); }
+
+/* ---- Tabs ---- */
+.admin-tabs {
+  display: flex;
+  gap: var(--space-1);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  border-bottom: 1px solid var(--color-border-dark);
+}
+
+.admin-tabs::-webkit-scrollbar { display: none; }
+
+.admin-tab {
+  flex-shrink: 0;
+  padding: var(--space-3) var(--space-3);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.6);
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+}
+
+.admin-tab.is-active {
+  color: var(--color-gold);
+  border-bottom-color: var(--color-gold);
+  font-weight: 600;
+}
+
+/* ---- Sections ---- */
+.admin-section {
+  display: none;
+  padding-top: var(--space-6);
+}
+
+.admin-section.is-active {
+  display: block;
+}
+
+.admin-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+}
+
+/* ---- Stat cards ---- */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-3);
+}
+
+.stat-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-gray-light);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+}
+
+.stat-card__label {
+  font-size: var(--fs-xs);
+  color: var(--color-gray);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-1);
+}
+
+.stat-card__value {
+  font-size: var(--fs-2xl);
+  font-weight: 700;
+  color: var(--color-black);
+}
+
+.stat-card__value--gold { color: var(--color-gold-dark); }
+.stat-card__value--error { color: var(--color-error); }
+.stat-card__value--muted { color: var(--color-gray); }
+
+/* ---- Tables ---- */
+.table-wrap {
+  background: var(--color-white);
+  border: 1px solid var(--color-gray-light);
+  border-radius: var(--radius-md);
+  overflow-x: auto;
+}
+
+.data-table {
+  width: 100%;
+  min-width: 640px;
+  border-collapse: collapse;
+  font-size: var(--fs-sm);
+}
+
+.data-table th {
+  text-align: left;
+  font-size: var(--fs-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-gray);
+  padding: var(--space-3) var(--space-3);
+  border-bottom: 1px solid var(--color-gray-light);
+  background: var(--color-off-white);
+  white-space: nowrap;
+}
+
+.data-table td {
+  padding: var(--space-3);
+  border-bottom: 1px solid var(--color-gray-lighter);
+  vertical-align: middle;
+}
+
+.data-table tr:last-child td { border-bottom: none; }
+
+.data-table__actions {
+  display: flex;
+  gap: var(--space-1);
+  flex-wrap: wrap;
+}
+
+.table-empty-row td {
+  text-align: center;
+  color: var(--color-gray);
+  padding: var(--space-6) var(--space-3);
+}
+
+/* ---- Queue-specific chips ---- */
+.queue-num-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--color-black);
+  color: var(--color-gold);
+  font-weight: 700;
+  font-size: var(--fs-xs);
+}
+
+.walkin-tag {
+  display: inline-block;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  color: var(--color-gold-dark);
+  background: var(--color-off-white);
+  border: 1px solid var(--color-gold-light);
+  padding: 0.1rem 0.5rem;
+  border-radius: var(--radius-pill);
+  margin-left: var(--space-1);
+}
+
+/* ---- Small buttons for dense action cells ---- */
+.btn--xs {
+  padding: 0.4rem 0.7rem;
+  font-size: 0.7rem;
+}
+
+.btn--gold-outline {
+  background: transparent;
+  border: 1px solid var(--color-gold-dark);
+  color: var(--color-gold-dark);
+}
+.btn--gold-outline:hover { background: var(--color-gold); color: var(--color-black); border-color: var(--color-gold); }
+
+/* ---- Modal ---- */
+.admin-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(11, 11, 11, 0.55);
+  z-index: var(--z-modal);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+}
+
+.admin-modal-overlay.is-open {
+  display: flex;
+}
+
+.admin-modal {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  width: 100%;
+  max-width: 480px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow-strong);
+}
+
+.admin-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-4);
+}
+
+.admin-modal__close {
+  font-size: var(--fs-lg);
+  line-height: 1;
+  color: var(--color-gray);
+  padding: var(--space-1);
+}
+
+.admin-modal__close:hover { color: var(--color-black); }
+
+.admin-modal__actions {
+  display: flex;
+  gap: var(--space-2);
+  justify-content: flex-end;
+  margin-top: var(--space-4);
+}
+
+/* ---- Settings form ---- */
+.settings-grid {
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: 1fr;
+}
+
+.weekly-off-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  gap: var(--space-2);
+}
+
+.day-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+  padding: 0.6rem;
+  border: 1px solid var(--color-gray-light);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.day-toggle input { accent-color: var(--color-gold-dark); }
+
+.day-toggle.is-off {
+  border-color: var(--color-gold-dark);
+  background: var(--color-off-white);
+  color: var(--color-gold-dark);
+}
+
+.holiday-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid var(--color-gray-lighter);
+  font-size: var(--fs-sm);
+}
+
+.holiday-row:last-child { border-bottom: none; }
+
+/* ---- Customer search result ---- */
+.customer-result-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  border: 1px solid var(--color-gray-light);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-2);
+  cursor: pointer;
+  transition: border-color var(--transition-fast);
+}
+
+.customer-result-card:hover { border-color: var(--color-gold); }
+
+.customer-result-card__name { font-weight: 600; }
+.customer-result-card__meta { font-size: var(--fs-xs); color: var(--color-gray); }
+
+/* ---- Reports ---- */
+.report-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  align-items: flex-end;
+  margin-bottom: var(--space-4);
+}
+
+.report-toolbar .field {
+  margin-bottom: 0;
+  min-width: 160px;
+}
+
+.report-summary-row {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-4);
+}
+
+/* ---- Loading / connection note ---- */
+.admin-loading-note {
+  color: var(--color-gray);
+  font-size: var(--fs-sm);
+  padding: var(--space-4) 0;
+}
+
+.realtime-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #2e7d32;
+  margin-right: var(--space-1);
+  box-shadow: 0 0 0 rgba(46, 125, 50, 0.5);
+  animation: dl-pulse 2s infinite;
+}
+
+@keyframes dl-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(46, 125, 50, 0.5); }
+  70% { box-shadow: 0 0 0 6px rgba(46, 125, 50, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(46, 125, 50, 0); }
+}
+
+@media (min-width: 640px) {
+  .stat-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+@media (min-width: 960px) {
+  .stat-grid { grid-template-columns: repeat(4, 1fr); }
+  .settings-grid { grid-template-columns: repeat(2, 1fr); }
+}

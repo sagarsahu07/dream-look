@@ -1,0 +1,353 @@
+/* ==========================================================================
+   Dream Look — Global Styles
+   Mobile-first. Loaded on every page after variables.css and reset.css.
+   ========================================================================== */
+
+/* ---- Typography ---- */
+h1, h2, h3, h4 {
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--color-black);
+}
+
+h1 { font-size: var(--fs-3xl); }
+h2 { font-size: var(--fs-2xl); }
+h3 { font-size: var(--fs-xl); }
+h4 { font-size: var(--fs-md); }
+
+p { color: var(--color-gray); }
+
+.eyebrow {
+  display: inline-block;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-gold-dark);
+  margin-bottom: var(--space-2);
+}
+
+.section-title {
+  margin-bottom: var(--space-2);
+}
+
+.section-subtitle {
+  max-width: 560px;
+  color: var(--color-gray);
+  margin-bottom: var(--space-6);
+}
+
+.text-center { text-align: center; }
+
+/* ---- Layout ---- */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+}
+
+.section {
+  padding: var(--space-8) 0;
+}
+
+.section--dark {
+  background: var(--color-black);
+  color: var(--color-white);
+}
+
+.section--dark h2,
+.section--dark h3,
+.section--dark p {
+  color: var(--color-white);
+}
+
+.section--dark p {
+  color: rgba(255, 255, 255, 0.68);
+}
+
+.section--muted {
+  background: var(--color-off-white);
+}
+
+.grid {
+  display: grid;
+  gap: var(--space-4);
+}
+
+@media (min-width: 640px) {
+  .grid--2 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 960px) {
+  .grid--3 { grid-template-columns: repeat(3, 1fr); }
+  .grid--4 { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* ---- Buttons ---- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+  padding: 0.9rem 2rem;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  border-radius: var(--radius-sm);
+  transition: background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+  white-space: nowrap;
+}
+
+.btn:active { transform: translateY(1px); }
+
+.btn--primary {
+  background: var(--color-gold);
+  color: var(--color-black);
+}
+
+.btn--primary:hover { background: var(--color-gold-dark); }
+
+.btn--dark {
+  background: var(--color-black);
+  color: var(--color-white);
+}
+
+.btn--dark:hover { background: var(--color-black-soft); }
+
+.btn--outline {
+  background: transparent;
+  color: var(--color-white);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.btn--outline:hover {
+  border-color: var(--color-gold);
+  color: var(--color-gold);
+}
+
+.btn--outline-dark {
+  background: transparent;
+  color: var(--color-black);
+  border: 1px solid var(--color-black);
+}
+
+.btn--outline-dark:hover {
+  border-color: var(--color-gold-dark);
+  color: var(--color-gold-dark);
+}
+
+.btn--block { width: 100%; }
+
+.btn--sm {
+  padding: 0.6rem 1.25rem;
+  font-size: var(--fs-xs);
+}
+
+.btn[disabled] {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* ---- Forms ---- */
+.field {
+  margin-bottom: var(--space-4);
+  text-align: left;
+}
+
+.field label {
+  display: block;
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  margin-bottom: var(--space-1);
+  color: var(--color-black);
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--color-gray-light);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-base);
+  background: var(--color-white);
+  transition: border-color var(--transition-fast);
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color: var(--color-gold);
+}
+
+.field textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.field-error {
+  display: none;
+  font-size: var(--fs-xs);
+  color: var(--color-error);
+  margin-top: var(--space-1);
+}
+
+.field.has-error input,
+.field.has-error select,
+.field.has-error textarea {
+  border-color: var(--color-error);
+}
+
+.field.has-error .field-error {
+  display: block;
+}
+
+.field-hint {
+  font-size: var(--fs-xs);
+  color: var(--color-gray);
+  margin-top: var(--space-1);
+}
+
+/* ---- Cards ---- */
+.card {
+  background: var(--color-white);
+  border: 1px solid var(--color-gray-light);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+  transition: border-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+.card:hover {
+  border-color: var(--color-gold);
+  box-shadow: var(--shadow-soft);
+}
+
+/* ---- Toast (feedback messages) ---- */
+.toast {
+  position: fixed;
+  top: var(--space-4);
+  right: var(--space-4);
+  left: var(--space-4);
+  max-width: 380px;
+  margin-left: auto;
+  z-index: var(--z-toast);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  box-shadow: var(--shadow-strong);
+  transform: translateY(-16px);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform var(--transition-base), opacity var(--transition-base);
+}
+
+.toast.is-visible {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.toast--success {
+  background: var(--color-black);
+  color: var(--color-white);
+  border-left: 3px solid var(--color-gold);
+}
+
+.toast--error {
+  background: var(--color-black);
+  color: var(--color-white);
+  border-left: 3px solid var(--color-error);
+}
+
+/* ---- Page loader ---- */
+.page-loader {
+  position: fixed;
+  inset: 0;
+  background: var(--color-white);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity var(--transition-base);
+}
+
+.page-loader.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.page-loader__mark {
+  font-family: var(--font-primary);
+  font-weight: 600;
+  font-size: var(--fs-lg);
+  letter-spacing: 0.08em;
+  color: var(--color-black);
+}
+
+.page-loader__mark span {
+  color: var(--color-gold);
+}
+
+/* ---- Skeleton / empty state ---- */
+.empty-state {
+  text-align: center;
+  padding: var(--space-7) var(--space-4);
+  color: var(--color-gray);
+}
+
+.empty-state h3 {
+  margin-bottom: var(--space-1);
+}
+
+/* ---- Status badges (used on dashboard, booking-success, admin queue/scan) ---- */
+.status-badge {
+  display: inline-block;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-pill);
+  text-transform: capitalize;
+  white-space: nowrap;
+}
+
+.status-badge--confirmed {
+  background: #ebf5eb;
+  color: var(--color-success);
+}
+
+.status-badge--pending {
+  background: #fdf3e3;
+  color: #a3720c;
+}
+
+.status-badge--cancelled {
+  background: #fdeceb;
+  color: var(--color-error);
+}
+
+.status-badge--completed {
+  background: var(--color-gray-lighter);
+  color: var(--color-gray);
+}
+
+.status-badge--no_show {
+  background: #fdeceb;
+  color: var(--color-error);
+}
+
+.status-badge--arrived {
+  background: #fdf3e3;
+  color: #a3720c;
+}
+
+.status-badge--in_service {
+  background: #e8f0fe;
+  color: #1a56db;
+}
+
+@media (min-width: 960px) {
+  h1 { font-size: var(--fs-4xl); }
+}

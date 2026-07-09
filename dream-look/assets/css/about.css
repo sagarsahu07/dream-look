@@ -1,0 +1,53 @@
+/* ==========================================================================
+   Dream Look — About
+   ========================================================================== */
+
+.about-hero {
+  background: var(--color-black);
+  color: var(--color-white);
+  padding: var(--space-7) 0;
+  text-align: center;
+}
+
+.about-hero h1 { color: var(--color-white); }
+
+.about-hero p {
+  max-width: 560px;
+  margin: var(--space-3) auto 0;
+  color: rgba(255, 255, 255, 0.68);
+}
+
+.value-card {
+  text-align: center;
+}
+
+.value-card__num {
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  color: var(--color-gold);
+  margin-bottom: var(--space-2);
+}
+
+.stylist-card {
+  text-align: center;
+}
+
+.stylist-card__avatar {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  background: var(--color-off-white);
+  color: var(--color-gold-dark);
+  font-weight: 600;
+  font-size: var(--fs-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--space-3);
+}
+
+.stylist-card__role {
+  font-size: var(--fs-sm);
+  color: var(--color-gold-dark);
+  margin-bottom: var(--space-2);
+}

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Profile — Dream Look</title>
+  <meta name="description" content="View and update your Dream Look account details.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💈</text></svg>">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/navbar.css">
+  <link rel="stylesheet" href="assets/css/footer.css">
+  <link rel="stylesheet" href="assets/css/profile.css">
+</head>
+<body data-page="profile">
+
+  <div class="page-loader" id="dl-page-loader">
+    <div class="page-loader__mark">DREAM <span>LOOK</span></div>
+  </div>
+
+  <div id="dl-navbar"></div>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <div class="profile-header">
+          <div class="profile-avatar" id="profile-avatar">?</div>
+          <div>
+            <h1 class="profile-header__name" id="profile-name-header">Your Profile</h1>
+            <p class="profile-header__email" id="profile-email-header"></p>
+          </div>
+        </div>
+
+        <div class="form-alert form-alert--error" id="profile-alert"></div>
+
+        <div class="card" id="loyalty-card" style="display:none; margin-bottom: var(--space-5); max-width:520px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap: var(--space-3);">
+            <div>
+              <div class="field-hint" style="margin-bottom:2px;">Membership Tier</div>
+              <div style="font-size: var(--fs-lg); font-weight:700; color:var(--color-gold-dark); text-transform:capitalize;" id="loyalty-tier">Standard</div>
+            </div>
+            <div style="text-align:right;">
+              <div class="field-hint" style="margin-bottom:2px;">Reward Points</div>
+              <div style="font-size: var(--fs-lg); font-weight:700;" id="loyalty-points">0</div>
+            </div>
+            <div style="text-align:right;">
+              <div class="field-hint" style="margin-bottom:2px;">Visits</div>
+              <div style="font-size: var(--fs-lg); font-weight:700;" id="loyalty-visits">0</div>
+            </div>
+          </div>
+        </div>
+
+        <form id="profile-form" class="profile-form" novalidate>
+          <div class="field">
+            <label for="profile-name">Full name</label>
+            <input type="text" id="profile-name" name="fullName">
+            <span class="field-error" data-for="profile-name"></span>
+          </div>
+          <div class="field">
+            <label for="profile-email">Email address</label>
+            <input type="email" id="profile-email" name="email" disabled>
+            <span class="field-hint">Email is linked to your login and can't be changed here.</span>
+          </div>
+          <div class="field">
+            <label for="profile-phone">Phone number</label>
+            <input type="tel" id="profile-phone" name="phone" placeholder="+91 90000 00000">
+            <span class="field-error" data-for="profile-phone"></span>
+          </div>
+
+          <div class="profile-actions">
+            <button type="submit" class="btn btn--primary" id="profile-submit">Save Changes</button>
+            <button type="button" class="btn btn--outline-dark" id="profile-logout">Logout</button>
+          </div>
+        </form>
+
+        <div class="danger-zone">
+          <h4>Need help with your account?</h4>
+          <p>To close your account or request data removal, please contact us directly.</p>
+          <a href="contact.html" class="btn btn--danger-outline btn--sm">Contact Support</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="dl-footer"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/supabaseClient.js"></script>
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/auth.js"></script>
+  <script src="assets/js/navbar.js"></script>
+  <script src="assets/js/footer.js"></script>
+  <script src="assets/js/profile.js"></script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+/* ==========================================================================
+   Dream Look — QR Poster (Admin)
+   ========================================================================== */
+
+.qr-poster {
+  max-width: 480px;
+  margin: 0 auto;
+  background: var(--color-black);
+  color: var(--color-white);
+  border-radius: var(--radius-lg);
+  padding: var(--space-7) var(--space-5);
+  text-align: center;
+}
+
+.qr-poster__mark {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 1px solid var(--color-gold);
+  color: var(--color-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: var(--fs-lg);
+  margin: 0 auto var(--space-3);
+}
+
+.qr-poster__shop-name {
+  font-size: var(--fs-2xl);
+  font-weight: 700;
+  color: var(--color-white);
+  margin-bottom: var(--space-2);
+}
+
+.qr-poster__tagline {
+  color: var(--color-gold);
+  font-size: var(--fs-md);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin-bottom: var(--space-6);
+}
+
+.qr-poster__qr-wrap {
+  background: var(--color-white);
+  display: inline-block;
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-6);
+}
+
+.qr-poster__qr-wrap canvas {
+  display: block;
+}
+
+.qr-poster__url {
+  font-size: var(--fs-md);
+  color: var(--color-white);
+  margin-bottom: var(--space-1);
+  word-break: break-all;
+}
+
+.qr-poster__phone {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: var(--fs-sm);
+}
+
+/* ---- Wall-poster scale (bigger everything, for printing large) ---- */
+.qr-poster--wall {
+  max-width: 720px;
+  padding: var(--space-8) var(--space-6);
+}
+
+.qr-poster--wall .qr-poster__shop-name { font-size: var(--fs-4xl); }
+.qr-poster--wall .qr-poster__tagline { font-size: var(--fs-xl); }
+.qr-poster--wall .qr-poster__url { font-size: var(--fs-lg); }
+.qr-poster--wall .qr-poster__phone { font-size: var(--fs-md); }
+
+.qr-size-toggle {
+  display: flex;
+  gap: var(--space-2);
+  justify-content: center;
+  margin-bottom: var(--space-6);
+}
+
+.qr-poster-actions {
+  display: flex;
+  gap: var(--space-2);
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: var(--space-6);
+}
+
+@media print {
+  #dl-navbar, #dl-footer, .page-loader, .qr-size-toggle, .qr-poster-actions, .no-print {
+    display: none !important;
+  }
+  body { background: #fff; }
+  .qr-poster {
+    max-width: 100%;
+    margin: 0;
+    border-radius: 0;
+  }
+}

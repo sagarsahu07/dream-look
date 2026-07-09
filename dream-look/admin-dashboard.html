@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel — Dream Look</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💈</text></svg>">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/navbar.css">
+  <link rel="stylesheet" href="assets/css/footer.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <link rel="stylesheet" href="assets/css/book-slot.css">
+  <link rel="stylesheet" href="assets/css/admin-dashboard.css">
+</head>
+<body data-page="admin-dashboard">
+
+  <div class="page-loader" id="dl-page-loader">
+    <div class="page-loader__mark">DREAM <span>LOOK</span></div>
+  </div>
+
+  <div id="dl-navbar"></div>
+
+  <main class="admin-shell">
+    <header class="admin-header">
+      <div class="container admin-header__top">
+        <div>
+          <h1>Admin Panel</h1>
+          <p><span class="realtime-dot" id="realtime-indicator"></span>Live · <span id="admin-name">Staff</span></p>
+        </div>
+      </div>
+      <div class="container">
+        <nav class="admin-tabs" id="admin-tabs">
+          <button class="admin-tab is-active" data-tab="dashboard">Dashboard</button>
+          <button class="admin-tab" data-tab="queue">Queue</button>
+          <button class="admin-tab" data-tab="services">Services</button>
+          <button class="admin-tab" data-tab="barbers">Barbers</button>
+          <button class="admin-tab" data-tab="settings">Shop Settings</button>
+          <button class="admin-tab" data-tab="customers">Customers</button>
+          <button class="admin-tab" data-tab="reports">Reports</button>
+          <button class="admin-tab" data-tab="audit">Audit Log</button>
+        </nav>
+      </div>
+    </header>
+
+    <div class="container">
+
+      <!-- ================= DASHBOARD ================= -->
+      <section class="admin-section is-active" id="section-dashboard">
+        <div class="admin-section-header">
+          <h2 class="section-title" style="margin-bottom:0;">Today at a glance</h2>
+          <span class="field-hint" id="dashboard-date-label"></span>
+        </div>
+
+        <div class="stat-grid">
+          <div class="stat-card">
+            <div class="stat-card__label">Today's Bookings</div>
+            <div class="stat-card__value" id="stat-today-bookings">—</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card__label">Current Queue</div>
+            <div class="stat-card__value stat-card__value--gold" id="stat-current-queue">—</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card__label">Walk-ins Today</div>
+            <div class="stat-card__value" id="stat-walk-ins">—</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card__label">Revenue Today</div>
+            <div class="stat-card__value stat-card__value--gold" id="stat-revenue">—</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card__label">Completed</div>
+            <div class="stat-card__value" id="stat-completed">—</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card__label">Cancelled</div>
+            <div class="stat-card__value stat-card__value--muted" id="stat-cancelled">—</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card__label">No Show</div>
+            <div class="stat-card__value stat-card__value--error" id="stat-no-show">—</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card__label">Registered Customers</div>
+            <div class="stat-card__value" id="stat-total-customers">—</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= QUEUE ================= -->
+      <section class="admin-section" id="section-queue">
+        <div class="admin-section-header">
+          <h2 class="section-title" style="margin-bottom:0;">Today's Queue</h2>
+          <div style="display:flex; gap: var(--space-2); flex-wrap:wrap;">
+            <button class="btn btn--dark btn--sm" id="call-next-btn">Call Next Customer</button>
+            <button class="btn btn--primary btn--sm" id="open-walkin-btn">+ Walk-in Customer</button>
+          </div>
+        </div>
+
+        <div class="form-alert form-alert--error" id="queue-alert"></div>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Queue No</th>
+                <th>Customer</th>
+                <th>Service</th>
+                <th>Barber</th>
+                <th>Time</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="queue-table-body">
+              <tr class="table-empty-row"><td colspan="7">Loading queue…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ================= SERVICES ================= -->
+      <section class="admin-section" id="section-services">
+        <div class="admin-section-header">
+          <h2 class="section-title" style="margin-bottom:0;">Services</h2>
+          <button class="btn btn--primary btn--sm" id="open-add-service-btn">+ Add Service</button>
+        </div>
+
+        <div class="form-alert form-alert--error" id="services-alert"></div>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Duration</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="services-table-body">
+              <tr class="table-empty-row"><td colspan="5">Loading services…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ================= BARBERS ================= -->
+      <section class="admin-section" id="section-barbers">
+        <div class="admin-section-header">
+          <h2 class="section-title" style="margin-bottom:0;">Barbers</h2>
+          <button class="btn btn--primary btn--sm" id="open-add-barber-btn">+ Add Barber</button>
+        </div>
+
+        <div class="form-alert form-alert--error" id="barbers-alert"></div>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="barbers-table-body">
+              <tr class="table-empty-row"><td colspan="3">Loading barbers…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ================= SHOP SETTINGS ================= -->
+      <section class="admin-section" id="section-settings">
+        <div class="admin-section-header">
+          <h2 class="section-title" style="margin-bottom:0;">Shop Settings</h2>
+        </div>
+
+        <div class="form-alert" id="settings-alert"></div>
+
+        <div class="card" style="margin-bottom: var(--space-5);">
+          <form id="settings-form" novalidate>
+            <div class="settings-grid">
+              <div class="field">
+                <label for="setting-opening">Opening Time</label>
+                <input type="time" id="setting-opening">
+              </div>
+              <div class="field">
+                <label for="setting-closing">Closing Time</label>
+                <input type="time" id="setting-closing">
+              </div>
+              <div class="field">
+                <label for="setting-buffer">Buffer Time (minutes)</label>
+                <input type="number" id="setting-buffer" min="0" step="5">
+                <span class="field-hint">Gap added after every booking before the next one can start.</span>
+              </div>
+              <div class="field">
+                <label for="setting-grace">Grace Period (minutes)</label>
+                <input type="number" id="setting-grace" min="0" step="5">
+                <span class="field-hint">How long to wait past start time before auto-marking a no-show.</span>
+              </div>
+              <div class="field">
+                <label for="setting-step">Slot Interval (minutes)</label>
+                <input type="number" id="setting-step" min="5" step="5">
+                <span class="field-hint">Granularity of bookable start times shown to customers.</span>
+              </div>
+              <div class="field">
+                <label for="setting-timezone">Shop Timezone</label>
+                <input type="text" id="setting-timezone" placeholder="Asia/Kolkata">
+              </div>
+              <div class="field">
+                <label>
+                  <input type="checkbox" id="setting-allow-multi" style="width:auto; display:inline-block; margin-right: 6px;">
+                  Allow multiple active bookings per customer per day
+                </label>
+              </div>
+            </div>
+
+            <div class="field" style="margin-top: var(--space-4);">
+              <label>Weekly Off</label>
+              <div class="weekly-off-grid" id="weekly-off-grid"></div>
+            </div>
+
+            <button type="submit" class="btn btn--primary" id="settings-save-btn" style="margin-top: var(--space-4);">Save Settings</button>
+          </form>
+        </div>
+
+        <div class="card">
+          <h3 style="margin-bottom: var(--space-3);">Holiday List</h3>
+          <div class="form-alert form-alert--error" id="holiday-alert"></div>
+          <div style="display:flex; gap: var(--space-2); flex-wrap:wrap; align-items:flex-end; margin-bottom: var(--space-4);">
+            <div class="field" style="margin-bottom:0;">
+              <label for="new-holiday-date">Add a closed date</label>
+              <input type="date" id="new-holiday-date">
+            </div>
+            <div class="field" style="margin-bottom:0; flex:1; min-width:160px;">
+              <label for="new-holiday-reason">Reason (optional)</label>
+              <input type="text" id="new-holiday-reason" placeholder="e.g. Diwali">
+            </div>
+            <button type="button" class="btn btn--dark btn--sm" id="add-holiday-btn">Add</button>
+          </div>
+          <div id="holiday-list"></div>
+        </div>
+      </section>
+
+      <!-- ================= CUSTOMERS ================= -->
+      <section class="admin-section" id="section-customers">
+        <div class="admin-section-header">
+          <h2 class="section-title" style="margin-bottom:0;">Customers</h2>
+        </div>
+
+        <div class="field" style="max-width:420px;">
+          <input type="search" id="customer-search-input" placeholder="Search by name, email or phone…">
+        </div>
+
+        <div id="customer-search-results" style="margin-top: var(--space-4);"></div>
+
+        <div id="customer-detail-panel" style="display:none; margin-top: var(--space-6);">
+          <h3 id="customer-detail-name" style="margin-bottom: var(--space-1);"></h3>
+          <p class="field-hint" id="customer-detail-meta" style="margin-bottom: var(--space-4);"></p>
+
+          <h4 style="margin-bottom: var(--space-2);">Upcoming Bookings</h4>
+          <div class="table-wrap" style="margin-bottom: var(--space-5);">
+            <table class="data-table">
+              <thead><tr><th>Date</th><th>Time</th><th>Service</th><th>Status</th></tr></thead>
+              <tbody id="customer-upcoming-body"><tr class="table-empty-row"><td colspan="4">—</td></tr></tbody>
+            </table>
+          </div>
+
+          <h4 style="margin-bottom: var(--space-2);">Booking History</h4>
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead><tr><th>Date</th><th>Time</th><th>Service</th><th>Status</th></tr></thead>
+              <tbody id="customer-history-body"><tr class="table-empty-row"><td colspan="4">—</td></tr></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= REPORTS ================= -->
+      <section class="admin-section" id="section-reports">
+        <div class="admin-section-header">
+          <h2 class="section-title" style="margin-bottom:0;">Reports</h2>
+        </div>
+
+        <div class="report-toolbar">
+          <div class="field">
+            <label for="report-preset">Range</label>
+            <select id="report-preset">
+              <option value="daily">Today</option>
+              <option value="weekly" selected>Last 7 Days</option>
+              <option value="monthly">Last 30 Days</option>
+              <option value="custom">Custom</option>
+            </select>
+          </div>
+          <div class="field" id="report-start-wrap" style="display:none;">
+            <label for="report-start">From</label>
+            <input type="date" id="report-start">
+          </div>
+          <div class="field" id="report-end-wrap" style="display:none;">
+            <label for="report-end">To</label>
+            <input type="date" id="report-end">
+          </div>
+          <button type="button" class="btn btn--dark btn--sm" id="run-report-btn">Run Report</button>
+        </div>
+
+        <div class="report-summary-row" id="report-summary"></div>
+
+        <h3 style="margin-bottom: var(--space-2);">Revenue by Day</h3>
+        <div class="table-wrap" style="margin-bottom: var(--space-6);">
+          <table class="data-table">
+            <thead>
+              <tr><th>Date</th><th>Bookings</th><th>Completed</th><th>Cancelled</th><th>No Show</th><th>Revenue</th></tr>
+            </thead>
+            <tbody id="revenue-report-body"><tr class="table-empty-row"><td colspan="6">Choose a range and run the report.</td></tr></tbody>
+          </table>
+        </div>
+
+        <h3 style="margin-bottom: var(--space-2);">Most Popular Services</h3>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Service</th><th>Bookings</th><th>Revenue</th></tr></thead>
+            <tbody id="popular-services-body"><tr class="table-empty-row"><td colspan="3">Choose a range and run the report.</td></tr></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ================= AUDIT LOG ================= -->
+      <section class="admin-section" id="section-audit">
+        <div class="admin-section-header">
+          <h2 class="section-title" style="margin-bottom:0;">Audit Log</h2>
+        </div>
+
+        <div class="report-toolbar">
+          <div class="field">
+            <label for="audit-start">From</label>
+            <input type="date" id="audit-start">
+          </div>
+          <div class="field">
+            <label for="audit-end">To</label>
+            <input type="date" id="audit-end">
+          </div>
+          <div class="field">
+            <label for="audit-action">Action</label>
+            <select id="audit-action">
+              <option value="">All actions</option>
+              <option value="booking_created">Booking Created</option>
+              <option value="booking_cancelled">Booking Cancelled</option>
+              <option value="booking_rescheduled">Booking Rescheduled</option>
+              <option value="booking_arrived">Marked Arrived</option>
+              <option value="booking_in_service">Marked In Service</option>
+              <option value="booking_completed">Booking Completed</option>
+              <option value="booking_no_show">Marked No Show</option>
+              <option value="booking_auto_expired_no_show">Auto-Expired No Show</option>
+              <option value="walk_in_booking_created">Walk-in Created</option>
+            </select>
+          </div>
+          <button type="button" class="btn btn--dark btn--sm" id="run-audit-btn">Filter</button>
+        </div>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>When</th><th>Action</th><th>Actor Role</th><th>Details</th></tr></thead>
+            <tbody id="audit-table-body"><tr class="table-empty-row"><td colspan="4">Choose a range and filter.</td></tr></tbody>
+          </table>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ============ Walk-in Modal ============ -->
+  <div class="admin-modal-overlay" id="walkin-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="walkin-modal-title">
+    <div class="admin-modal">
+      <div class="admin-modal__header">
+        <h3 id="walkin-modal-title">Add Walk-in Customer</h3>
+        <button type="button" class="admin-modal__close" data-close-modal="walkin-modal-overlay">&times;</button>
+      </div>
+      <div class="form-alert form-alert--error" id="walkin-alert"></div>
+      <form id="walkin-form" novalidate>
+        <div class="field">
+          <label for="walkin-name">Customer Name</label>
+          <input type="text" id="walkin-name" placeholder="Full name">
+          <span class="field-error" data-for="walkin-name"></span>
+        </div>
+        <div class="field">
+          <label for="walkin-phone">Phone <span style="color:var(--color-gray);font-weight:400;">(optional)</span></label>
+          <input type="tel" id="walkin-phone" placeholder="+91 90000 00000">
+          <span class="field-error" data-for="walkin-phone"></span>
+        </div>
+        <div class="field">
+          <label for="walkin-service">Service</label>
+          <select id="walkin-service"></select>
+        </div>
+        <p class="field-hint">The next available slot today will be assigned automatically, and a queue number generated immediately.</p>
+        <div class="admin-modal__actions">
+          <button type="button" class="btn btn--outline-dark btn--sm" data-close-modal="walkin-modal-overlay">Cancel</button>
+          <button type="submit" class="btn btn--primary btn--sm" id="walkin-submit-btn">Add Walk-in</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============ Service Modal ============ -->
+  <div class="admin-modal-overlay" id="service-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="service-modal-title">
+    <div class="admin-modal">
+      <div class="admin-modal__header">
+        <h3 id="service-modal-title">Add Service</h3>
+        <button type="button" class="admin-modal__close" data-close-modal="service-modal-overlay">&times;</button>
+      </div>
+      <div class="form-alert form-alert--error" id="service-modal-alert"></div>
+      <form id="service-form" novalidate>
+        <input type="hidden" id="service-id">
+        <div class="field">
+          <label for="service-name">Service Name</label>
+          <input type="text" id="service-name">
+          <span class="field-error" data-for="service-name"></span>
+        </div>
+        <div class="field">
+          <label for="service-description">Description</label>
+          <textarea id="service-description" style="min-height:80px;"></textarea>
+        </div>
+        <div class="field">
+          <label for="service-price">Price (₹)</label>
+          <input type="number" id="service-price" min="0" step="1">
+          <span class="field-error" data-for="service-price"></span>
+        </div>
+        <div class="field">
+          <label for="service-duration">Duration (minutes)</label>
+          <input type="number" id="service-duration" min="5" step="5">
+          <span class="field-error" data-for="service-duration"></span>
+        </div>
+        <div class="field">
+          <label>
+            <input type="checkbox" id="service-active" style="width:auto; display:inline-block; margin-right:6px;" checked>
+            Active (visible to customers)
+          </label>
+        </div>
+        <div class="admin-modal__actions">
+          <button type="button" class="btn btn--outline-dark btn--sm" data-close-modal="service-modal-overlay">Cancel</button>
+          <button type="submit" class="btn btn--primary btn--sm" id="service-submit-btn">Save Service</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============ Barber Modal ============ -->
+  <div class="admin-modal-overlay" id="barber-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="barber-modal-title">
+    <div class="admin-modal">
+      <div class="admin-modal__header">
+        <h3 id="barber-modal-title">Add Barber</h3>
+        <button type="button" class="admin-modal__close" data-close-modal="barber-modal-overlay">&times;</button>
+      </div>
+      <div class="form-alert form-alert--error" id="barber-modal-alert"></div>
+      <form id="barber-form" novalidate>
+        <input type="hidden" id="barber-id">
+        <div class="field">
+          <label for="barber-name">Barber Name</label>
+          <input type="text" id="barber-name">
+          <span class="field-error" data-for="barber-name"></span>
+        </div>
+        <div class="field">
+          <label>
+            <input type="checkbox" id="barber-active" style="width:auto; display:inline-block; margin-right:6px;" checked>
+            Active
+          </label>
+        </div>
+        <div class="admin-modal__actions">
+          <button type="button" class="btn btn--outline-dark btn--sm" data-close-modal="barber-modal-overlay">Cancel</button>
+          <button type="submit" class="btn btn--primary btn--sm" id="barber-submit-btn">Save Barber</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="dl-footer"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/supabaseClient.js"></script>
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/auth.js"></script>
+  <script src="assets/js/booking.js"></script>
+  <script src="assets/js/navbar.js"></script>
+  <script src="assets/js/footer.js"></script>
+  <script src="assets/js/admin-dashboard.js"></script>
+</body>
+</html>

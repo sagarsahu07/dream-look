@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QR Poster — Dream Look Admin</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💈</text></svg>">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/navbar.css">
+  <link rel="stylesheet" href="assets/css/footer.css">
+  <link rel="stylesheet" href="assets/css/qr-poster.css">
+</head>
+<body data-page="admin-qr-poster">
+
+  <div class="page-loader" id="dl-page-loader">
+    <div class="page-loader__mark">DREAM <span>LOOK</span></div>
+  </div>
+
+  <div id="dl-navbar"></div>
+
+  <main>
+    <section class="section" style="padding-top: var(--space-5);">
+      <div class="container" style="max-width:800px;">
+        <div class="eyebrow">Admin</div>
+        <h1 class="section-title">Booking QR Poster</h1>
+        <p class="section-subtitle">Print this and place it at the counter or on the wall — customers scan it to go straight to the booking page, no link needed.</p>
+
+        <div class="qr-size-toggle no-print">
+          <button type="button" class="btn btn--dark btn--sm" id="size-counter-btn">Counter Size</button>
+          <button type="button" class="btn btn--outline-dark btn--sm" id="size-wall-btn">Wall Poster Size</button>
+        </div>
+
+        <div class="qr-poster" id="qr-poster">
+          <div class="qr-poster__mark">DL</div>
+          <div class="qr-poster__shop-name">Dream Look</div>
+          <div class="qr-poster__tagline">Scan to Book Your Appointment</div>
+          <div class="qr-poster__qr-wrap">
+            <canvas id="qr-canvas"></canvas>
+          </div>
+          <div class="qr-poster__url" id="qr-url-label">yoursite.vercel.app/book-slot.html</div>
+          <div class="qr-poster__phone">+91 90000 00000</div>
+        </div>
+
+        <div class="qr-poster-actions no-print">
+          <button type="button" class="btn btn--outline-dark btn--sm" id="print-poster-btn">Print Poster</button>
+          <button type="button" class="btn btn--dark btn--sm" id="download-png-btn">Download PNG</button>
+          <button type="button" class="btn btn--primary btn--sm" id="download-svg-btn">Download SVG</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="dl-footer"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/supabaseClient.js"></script>
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/auth.js"></script>
+  <script src="assets/js/navbar.js"></script>
+  <script src="assets/js/footer.js"></script>
+  <script src="assets/js/admin-qr-poster.js"></script>
+</body>
+</html>

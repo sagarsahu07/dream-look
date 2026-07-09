@@ -1,0 +1,122 @@
+/* ==========================================================================
+   Dream Look — Auth Pages (Login / Signup / Forgot Password / Admin Login)
+   ========================================================================== */
+
+.auth-page {
+  min-height: calc(100vh - 72px);
+  display: flex;
+  align-items: center;
+  background: var(--color-off-white);
+  padding: var(--space-6) var(--space-4);
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+  background: var(--color-white);
+  border: 1px solid var(--color-gray-light);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6) var(--space-5);
+  box-shadow: var(--shadow-soft);
+}
+
+.auth-card__mark {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--color-gold);
+  color: var(--color-gold-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  margin: 0 auto var(--space-4);
+}
+
+.auth-card h1 {
+  font-size: var(--fs-xl);
+  text-align: center;
+  margin-bottom: var(--space-1);
+}
+
+.auth-card__subtitle {
+  text-align: center;
+  font-size: var(--fs-sm);
+  margin-bottom: var(--space-5);
+}
+
+.auth-card form {
+  margin-bottom: var(--space-4);
+}
+
+.auth-card__footnote {
+  text-align: center;
+  font-size: var(--fs-sm);
+  color: var(--color-gray);
+}
+
+.auth-card__footnote a {
+  color: var(--color-gold-dark);
+  font-weight: 600;
+}
+
+.auth-card__forgot {
+  display: block;
+  text-align: right;
+  font-size: var(--fs-xs);
+  color: var(--color-gray);
+  margin: -var(--space-2) 0 var(--space-4);
+}
+
+.auth-card__forgot:hover { color: var(--color-gold-dark); }
+
+.auth-card__divider {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin: var(--space-4) 0;
+  color: var(--color-gray);
+  font-size: var(--fs-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.auth-card__divider::before,
+.auth-card__divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--color-gray-light);
+}
+
+.auth-card--admin {
+  border-top: 3px solid var(--color-black);
+}
+
+.auth-card--admin .auth-card__mark {
+  border-color: var(--color-black);
+  color: var(--color-black);
+}
+
+.form-alert {
+  display: none;
+  font-size: var(--fs-sm);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--space-4);
+}
+
+.form-alert.is-visible { display: block; }
+
+.form-alert--error {
+  background: #fdeceb;
+  color: var(--color-error);
+  border: 1px solid #f3c8c3;
+}
+
+.form-alert--success {
+  background: #ebf5eb;
+  color: var(--color-success);
+  border: 1px solid #c6e3c6;
+}

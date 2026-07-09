@@ -1,0 +1,72 @@
+/* ==========================================================================
+   Dream Look — Profile
+   ========================================================================== */
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.profile-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--color-black);
+  color: var(--color-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--fs-xl);
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.profile-header__name {
+  font-size: var(--fs-lg);
+  margin-bottom: 2px;
+}
+
+.profile-header__email {
+  font-size: var(--fs-sm);
+  color: var(--color-gray);
+}
+
+.profile-form {
+  max-width: 520px;
+}
+
+.profile-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+}
+
+.danger-zone {
+  margin-top: var(--space-7);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-gray-light);
+}
+
+.danger-zone h4 {
+  color: var(--color-error);
+  margin-bottom: var(--space-1);
+}
+
+.danger-zone p {
+  font-size: var(--fs-sm);
+  margin-bottom: var(--space-3);
+}
+
+.btn--danger-outline {
+  background: transparent;
+  border: 1px solid var(--color-error);
+  color: var(--color-error);
+}
+
+.btn--danger-outline:hover {
+  background: var(--color-error);
+  color: var(--color-white);
+}

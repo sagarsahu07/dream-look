@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us — Dream Look</title>
+  <meta name="description" content="Get in touch with Dream Look barber studio — address, phone, email and enquiry form.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💈</text></svg>">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/navbar.css">
+  <link rel="stylesheet" href="assets/css/footer.css">
+  <link rel="stylesheet" href="assets/css/contact.css">
+</head>
+<body data-page="contact">
+
+  <div class="page-loader" id="dl-page-loader">
+    <div class="page-loader__mark">DREAM <span>LOOK</span></div>
+  </div>
+
+  <div id="dl-navbar"></div>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <div class="eyebrow">Get In Touch</div>
+        <h1 class="section-title">We would love to hear from you</h1>
+        <p class="section-subtitle">Questions about services, group bookings or anything else — send us a message and we will reply within one business day.</p>
+
+        <div class="contact-layout">
+          <div>
+            <div class="contact-info-card">
+              <div class="contact-info-card__icon">📍</div>
+              <div>
+                <div class="contact-info-card__label">Address</div>
+                <div class="contact-info-card__value">21 Marigold Street, Camp Area, Indore, Madhya Pradesh</div>
+              </div>
+            </div>
+            <div class="contact-info-card">
+              <div class="contact-info-card__icon">📞</div>
+              <div>
+                <div class="contact-info-card__label">Phone</div>
+                <div class="contact-info-card__value">+91 90000 00000</div>
+              </div>
+            </div>
+            <div class="contact-info-card">
+              <div class="contact-info-card__icon">✉️</div>
+              <div>
+                <div class="contact-info-card__label">Email</div>
+                <div class="contact-info-card__value">hello@dreamlook.studio</div>
+              </div>
+            </div>
+            <div class="contact-info-card">
+              <div class="contact-info-card__icon">🕒</div>
+              <div>
+                <div class="contact-info-card__label">Hours</div>
+                <div class="contact-info-card__value">Mon–Sat: 10 AM–8 PM · Sun: 10 AM–6 PM</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <form id="contact-form" novalidate>
+              <div class="field">
+                <label for="contact-name">Full name</label>
+                <input type="text" id="contact-name" name="name" placeholder="Your name" autocomplete="name">
+                <span class="field-error" data-for="contact-name"></span>
+              </div>
+              <div class="field">
+                <label for="contact-email">Email address</label>
+                <input type="email" id="contact-email" name="email" placeholder="you@example.com" autocomplete="email">
+                <span class="field-error" data-for="contact-email"></span>
+              </div>
+              <div class="field">
+                <label for="contact-message">Message</label>
+                <textarea id="contact-message" name="message" placeholder="How can we help?"></textarea>
+                <span class="field-error" data-for="contact-message"></span>
+              </div>
+              <button type="submit" class="btn btn--primary btn--block" id="contact-submit">Send Message</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="dl-footer"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/supabaseClient.js"></script>
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/auth.js"></script>
+  <script src="assets/js/navbar.js"></script>
+  <script src="assets/js/footer.js"></script>
+  <script src="assets/js/contact.js"></script>
+</body>
+</html>

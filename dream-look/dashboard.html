@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard — Dream Look</title>
+  <meta name="description" content="View your upcoming and past appointments at Dream Look.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💈</text></svg>">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/navbar.css">
+  <link rel="stylesheet" href="assets/css/footer.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <link rel="stylesheet" href="assets/css/reviews.css">
+  <link rel="stylesheet" href="assets/css/feedback.css">
+</head>
+<body data-page="dashboard">
+
+  <div class="page-loader" id="dl-page-loader">
+    <div class="page-loader__mark">DREAM <span>LOOK</span></div>
+  </div>
+
+  <div id="dl-navbar"></div>
+
+  <main>
+    <header class="dash-header">
+      <div class="dash-header__inner">
+        <div>
+          <h1>Hi, <span id="dash-user-name">there</span> 👋</h1>
+          <p id="dash-user-email"></p>
+        </div>
+        <a href="book-slot.html" class="btn btn--primary btn--sm">Book New Slot</a>
+      </div>
+    </header>
+
+    <section class="section" style="padding-bottom:0;">
+      <div class="container">
+        <div id="upcoming-appointment-card"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="dash-grid dash-grid--stats" style="margin-bottom: var(--space-6);">
+          <div class="dash-stat">
+            <div class="dash-stat__label">Upcoming</div>
+            <div class="dash-stat__value" id="stat-upcoming">0</div>
+          </div>
+          <div class="dash-stat">
+            <div class="dash-stat__label">Completed</div>
+            <div class="dash-stat__value" id="stat-completed">0</div>
+          </div>
+          <div class="dash-stat">
+            <div class="dash-stat__label">Total Spent</div>
+            <div class="dash-stat__value dash-stat__value--gold" id="stat-spend">₹0</div>
+          </div>
+        </div>
+
+        <h2 class="section-title">Your bookings</h2>
+        <p class="section-subtitle">A history of everything you've booked with us.</p>
+
+        <div class="card" id="booking-list" style="display:none;"></div>
+
+        <div class="empty-state" id="booking-empty-state" style="display:none;">
+          <h3>No bookings yet</h3>
+          <p>When you book a slot, it will show up here.</p>
+          <a href="book-slot.html" class="btn btn--primary btn--sm" style="margin-top: var(--space-3);">Book Your First Slot</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="dl-footer"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/supabaseClient.js"></script>
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/auth.js"></script>
+  <script src="assets/js/booking.js"></script>
+  <script src="assets/js/navbar.js"></script>
+  <script src="assets/js/footer.js"></script>
+  <script src="assets/js/offline-banner.js"></script>
+  <script src="assets/js/dashboard.js"></script>
+</body>
+</html>

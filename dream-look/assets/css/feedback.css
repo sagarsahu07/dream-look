@@ -1,0 +1,86 @@
+/* ==========================================================================
+   Dream Look — Production Feedback (status pages, skeletons, offline banner)
+   ========================================================================== */
+
+.status-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--space-6) var(--space-4);
+  background: var(--color-black);
+  color: var(--color-white);
+}
+
+.status-page__mark {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 1px solid var(--color-gold);
+  color: var(--color-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  margin-bottom: var(--space-4);
+}
+
+.status-page__code {
+  font-size: var(--fs-4xl);
+  font-weight: 700;
+  color: var(--color-gold);
+  line-height: 1;
+  margin-bottom: var(--space-3);
+}
+
+.status-page h1 {
+  color: var(--color-white);
+  font-size: var(--fs-xl);
+  margin-bottom: var(--space-2);
+}
+
+.status-page p {
+  color: rgba(255, 255, 255, 0.65);
+  max-width: 420px;
+  margin-bottom: var(--space-5);
+}
+
+.status-page__actions {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.status-page .btn--outline-dark {
+  border-color: rgba(255, 255, 255, 0.4);
+  color: var(--color-white);
+}
+
+.status-page .btn--outline-dark:hover {
+  border-color: var(--color-gold);
+  color: var(--color-gold);
+}
+
+/* ---- Offline banner ---- */
+.offline-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-toast);
+  background: var(--color-black);
+  color: var(--color-white);
+  text-align: center;
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--fs-sm);
+  border-top: 2px solid var(--color-gold);
+  transform: translateY(100%);
+  transition: transform var(--transition-base);
+}
+
+.offline-banner.is-visible {
+  transform: translateY(0);
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login — Dream Look</title>
+  <meta name="description" content="Dream Look staff and admin login.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💈</text></svg>">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/navbar.css">
+  <link rel="stylesheet" href="assets/css/footer.css">
+  <link rel="stylesheet" href="assets/css/auth.css">
+</head>
+<body data-page="admin-login">
+
+  <div class="page-loader" id="dl-page-loader">
+    <div class="page-loader__mark">DREAM <span>LOOK</span></div>
+  </div>
+
+  <div id="dl-navbar"></div>
+
+  <main class="auth-page">
+    <div class="auth-card auth-card--admin">
+      <div class="auth-card__mark">DL</div>
+      <h1>Admin Login</h1>
+      <p class="auth-card__subtitle">Restricted access for Dream Look staff.</p>
+
+      <div class="form-alert form-alert--error" id="admin-login-alert"></div>
+
+      <form id="admin-login-form" novalidate>
+        <div class="field">
+          <label for="admin-email">Admin email</label>
+          <input type="email" id="admin-email" name="email" placeholder="admin@dreamlook.studio" autocomplete="email">
+          <span class="field-error" data-for="admin-email"></span>
+        </div>
+        <div class="field">
+          <label for="admin-password">Password</label>
+          <input type="password" id="admin-password" name="password" placeholder="••••••••" autocomplete="current-password">
+          <span class="field-error" data-for="admin-password"></span>
+        </div>
+        <button type="submit" class="btn btn--dark btn--block" id="admin-login-submit">Access Admin Panel</button>
+      </form>
+
+      <p class="auth-card__footnote">Not a staff member? <a href="login.html">Customer login</a></p>
+    </div>
+  </main>
+
+  <div id="dl-footer"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/supabaseClient.js"></script>
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/auth.js"></script>
+  <script src="assets/js/navbar.js"></script>
+  <script src="assets/js/footer.js"></script>
+  <script src="assets/js/admin-login.js"></script>
+</body>
+</html>

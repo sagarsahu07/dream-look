@@ -1,0 +1,142 @@
+/* ==========================================================================
+   Dream Look — Book Slot (UI shell only, logic added in a later phase)
+   ========================================================================== */
+
+.booking-layout {
+  display: grid;
+  gap: var(--space-5);
+  grid-template-columns: 1fr;
+}
+
+.booking-steps {
+  display: flex;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+  flex-wrap: wrap;
+}
+
+.booking-step {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--fs-sm);
+  color: var(--color-gray);
+}
+
+.booking-step__num {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 1px solid var(--color-gray-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+}
+
+.booking-step.is-active {
+  color: var(--color-black);
+  font-weight: 600;
+}
+
+.booking-step.is-active .booking-step__num {
+  border-color: var(--color-gold);
+  background: var(--color-gold);
+  color: var(--color-black);
+}
+
+.service-select-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border: 1px solid var(--color-gray-light);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-3);
+  cursor: pointer;
+  transition: border-color var(--transition-fast);
+}
+
+.service-select-card:hover,
+.service-select-card.is-selected {
+  border-color: var(--color-gold);
+}
+
+.service-select-card__name {
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.service-select-card__meta {
+  font-size: var(--fs-xs);
+  color: var(--color-gray);
+}
+
+.service-select-card__price {
+  font-weight: 600;
+  color: var(--color-gold-dark);
+  white-space: nowrap;
+}
+
+.slot-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-2);
+}
+
+.slot-btn {
+  padding: 0.65rem 0.5rem;
+  border: 1px solid var(--color-gray-light);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-sm);
+  text-align: center;
+  transition: border-color var(--transition-fast), background var(--transition-fast);
+}
+
+.slot-btn:hover { border-color: var(--color-gold); }
+
+.slot-btn.is-selected {
+  background: var(--color-black);
+  color: var(--color-white);
+  border-color: var(--color-black);
+}
+
+.slot-btn[disabled] {
+  color: var(--color-gray-light);
+  border-color: var(--color-gray-lighter);
+  cursor: not-allowed;
+}
+
+.booking-summary {
+  position: static;
+  background: var(--color-off-white);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+  height: fit-content;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--fs-sm);
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid var(--color-gray-light);
+}
+
+.summary-row__total {
+  font-weight: 700;
+  font-size: var(--fs-md);
+  color: var(--color-black);
+}
+
+@media (min-width: 960px) {
+  .booking-layout {
+    grid-template-columns: 1.6fr 1fr;
+  }
+  .booking-summary {
+    position: sticky;
+    top: calc(72px + var(--space-4));
+  }
+}

@@ -1,0 +1,47 @@
+/* ==========================================================================
+   Dream Look — Contact
+   ========================================================================== */
+
+.contact-layout {
+  display: grid;
+  gap: var(--space-6);
+  grid-template-columns: 1fr;
+}
+
+.contact-info-card {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-4) 0;
+  border-bottom: 1px solid var(--color-gray-light);
+}
+
+.contact-info-card__icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--color-off-white);
+  color: var(--color-gold-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.contact-info-card__label {
+  font-size: var(--fs-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-gray);
+  margin-bottom: 2px;
+}
+
+.contact-info-card__value {
+  font-weight: 500;
+}
+
+@media (min-width: 960px) {
+  .contact-layout {
+    grid-template-columns: 1fr 1.2fr;
+  }
+}
